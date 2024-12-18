@@ -114,8 +114,7 @@ def insert_comment(post_id, user_id, content, parent_comment_id=None):
 
 
 def call_gemini_api(prompt, api_key):
-    api_key = str(api_key).strip()
-
+    
     headers = {
         "Content-Type": "application/json",
         "x-goog-api-key": api_key
