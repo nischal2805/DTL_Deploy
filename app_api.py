@@ -119,7 +119,7 @@ def call_gemini_api(prompt, api_key):
     Ensure API key is properly formatted as a string.
     """
     # Ensure api_key is a string and strip any whitespace
-    api_key = str(api_key).strip()
+    api_key = str(api_key)
 
     headers = {
         "Content-Type": "application/json",
