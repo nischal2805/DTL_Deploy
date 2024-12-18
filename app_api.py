@@ -114,26 +114,19 @@ def insert_comment(post_id, user_id, content, parent_comment_id=None):
 
 
 def call_gemini_api(prompt, api_key):
-    """
-    Enhanced Gemini API call with robust error handling.
-    Ensure API key is properly formatted as a string.
-    """
-    # Ensure api_key is a string and strip any whitespace
-    api_key = str(api_key)
+    api_key = str(api_key).strip()
 
     headers = {
         "Content-Type": "application/json",
-        "x-goog-api-key": api_key  # Explicitly convert to string
+        "x-goog-api-key": api_key
     }
 
     payload = {
-        "contents": [{
-            "parts": [{"text": prompt}]
-        }],
-        "generationConfig": {
-            "temperature": 0.7,
-            "maxOutputTokens": 1024,
-        }
+        "prompt": {
+            "text": prompt
+        },
+        "temperature": 0.7,
+        "maxOutputTokens": 1024
     }
 
     try:
@@ -141,7 +134,7 @@ def call_gemini_api(prompt, api_key):
         response.raise_for_status()
         
         response_data = response.json()
-        generated_text = response_data['candidates'][0]['content']['parts'][0]['text']
+        generated_text = response_data['candidates'][0]['output']
         
         return generated_text
     
