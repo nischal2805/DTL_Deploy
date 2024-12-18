@@ -30,7 +30,7 @@ def get_api_key():
 
 
 # Gemini API endpoint
-API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key"
+API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent"
 
 # Initialize SQLite database
 def init_db():
